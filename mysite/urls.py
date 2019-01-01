@@ -20,4 +20,10 @@ from blog import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'show_time/', views.show_time),
+    # 只有分组的东西才有参数,无命名分组
+    re_path(r'article/(\d{4})$',views.article),
+    # 有名分组
+    re_path(r'article/(?P<year>\d{4})/(?P<month>\d{2})',views.articles),
+    re_path(r'register/',views.register,name="reg"),
+    re_path(r"query/",views.query)
 ]

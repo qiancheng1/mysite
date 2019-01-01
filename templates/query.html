@@ -1,0 +1,79 @@
+{% load myTag %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0 ;
+            padding: 0;
+        }
+
+        .first{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<h1>出来吧 {{ t }}</h1>
+<h1>出来吧 {{ action.1 }} {{ action.3 }}嬉戏</h1>
+<h1>出来吧 {{ dict.name }} {{ dict.biantai }}</h1>
+<h1>出来吧 {{ p.name }} {{ p.sex }}</h1>
+
+{#<h2>{{ st|cut:" " }}</h2>#}
+{#<h2>{{ st|upper }}</h2>#}
+{#<h2>{{ st|capfirst }}</h2>#}
+{##}
+{#<h2>{{num|add:12 }}</h2>#}
+{#<h2>{{ l|default:"空的" }}</h2>#}
+{#<h2>{{ a|safe }}</h2>#}
+{#<h2>{{ t|date:'Y-m-d' }}</h2>#}
+{#{% autoescape off %}#}
+{#    <h2>{{ a }}</h2>#}
+{#{% endautoescape %}#}
+
+
+{% for name in action %}
+    <h2>{{ forloop.counter0 }}{{ name }}</h2>
+{% endfor %}
+
+{#{% for name in action %}#}
+{#    <h2>{{ forloop.revcounter0 }}{{ name }}</h2>#}
+{#{% endfor %}#}
+
+{% if num > 20 %}
+    {% if num > 50 %}
+        <h2>都大于50了啊, age is {{ num }}</h2>
+    {% else %}
+        <h2>大于20,小于50,age is {{ num }}</h2>
+    {% endif %}
+{% elif num > 10 %}
+    <h2>大于10,age is {{ num }}</h2>
+{% else %}
+    <h2>小于10,age is {{ num }}</h2>
+{% endif %}
+
+
+{% for i in action %}
+    {% if forloop.first %}
+        <li class="first">
+            {% else %}
+        <li>
+    {% endif %}
+{{ i }}
+</li>
+    {% empty %}
+    <h1>为空了哦</h1>
+{% endfor %}
+
+
+{#参数只能传一个#}
+{{ num|multi:4 }} </br>
+
+{#不能用在控制语句里面#}
+{% multi 4 5 %}
+
+
+</body>
+</html>

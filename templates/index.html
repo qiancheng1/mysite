@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>WOSHI DAGEDA</title>
+    {% load staticfiles %}
 </head>
 <body>
 
 <h1>hello {{ t }}</h1>
+{#<script src="/static/jquery-3.3.1.js"></script>#}
+{#推荐用下面这种方法#}
+<script src="{% static 'jquery-3.3.1.js' %}"></script>
+<script>
+    $("h1").css("color", "red")
+</script>
 </body>
 </html>
